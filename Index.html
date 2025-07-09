@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xtreme GameHub by Chahat Kumar | Your Ultimate Gaming Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00ffcc',
+                        secondary: '#8a2be2',
+                        dark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Oxanium', sans-serif;
+            background-color: #0f172a;
+            color: white;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 255, 204, 0.2);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        .play-button:hover {
+            animation: pulse 0.5s infinite;
+            transform: translateY(-2px);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #00ffcc;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00ffcc }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-black bg-opacity-80 backdrop-blur-sm fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/938c20dc-d9a4-44c0-9ea2-72103b40e25e.png" alt="Xtreme GameHub logo with neon green and purple accents" class="h-8 w-8" />
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="text-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                            <a href="#games" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Games</a>
+                            <a href="#news" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">News</a>
+                            <a href="#community" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Community</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button class="bg-primary text-black px-4 py-2 rounded-md text-sm font-medium hover:bg-opacity-80 transition">Sign In</button>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center bg-gradient-to-b from-black to-dark overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bda79636-6e3c-4038-bcf9-9de62fbed1a5.png" alt="Futuristic gaming setup with RGB lighting and high-end peripherals" class="w-full h-full object-cover opacity-20" />
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 typewriter">Welcome to <span class="text-primary">Xtreme Chahat</span></h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Your ultimate destination for gaming news, community, and the hottest playable titles of 2025</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="exploreGames()" class="bg-primary text-black px-8 py-4 rounded-lg text-lg font-bold hover:bg-opacity-90 transition transform hover:scale-105 pulse-animation">Explore Games</button>
+                <button class="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-bold hover:bg-primary hover:bg-opacity-10 transition transform hover:scale-105">Join Community</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Games -->
+    <section id="games" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-center"><span class="border-b-4 border-primary">Featured Games</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Game Card 1 -->
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/44cc588a-63a0-4fa9-8d6b-92bfc02853a6.png" alt="Futuristic first-person shooter game with advanced weaponry and cybernetic characters" class="w-full h-64 object-cover" />
+                        <span class="absolute top-4 left-4 bg-primary text-black px-3 py-1 rounded-full text-xs font-bold">NEW</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">CyberStrike 2077</h3>
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400">★★★★☆</span>
+                            <span class="text-gray-400 ml-2">4.2/5</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Experience the ultimate futuristic FPS with groundbreaking AI and physics.</p>
+                        <button onclick="playGame('cyberstrike')" class="w-full bg-secondary hover:bg-opacity-80 text-white py-2 px-4 rounded transition pulse-animation">Play Now</button>
+                    </div>
+                </div>
+                
+                <!-- Game Card 2 -->
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/05ec0de8-3c76-4720-99bf-3f0de8021156.png" alt="Fantasy RPG open world with dragons, castles and medieval landscapes" class="w-full h-64 object-cover" />
+                        <span class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">HOT</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Dragon's Legacy</h3>
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400">★★★★★</span>
+                            <span class="text-gray-400 ml-2">4.8/5</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Embark on an epic fantasy adventure with unprecedented character customization.</p>
+                        <button onclick="playGame('dragons-legacy')" class="w-full bg-secondary hover:bg-opacity-80 text-white py-2 px-4 rounded transition pulse-animation">Play Now</button>
+                    </div>
+                </div>
+                
+                <!-- Game Card 3 -->
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dc18ac63-1c08-484c-ad39-a052dce52970.png" alt="High-speed racing game with exotic cars on neon-lit futuristic tracks" class="w-full h-64 object-cover" />
+                        <span class="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">VR</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Neon Velocity</h3>
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400">★★★★☆</span>
+                            <span class="text-gray-400 ml-2">4.5/5</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Augmented reality racing at breakneck speeds with full VR support.</p>
+                        <button onclick="playGame('neon-velocity')" class="w-full bg-secondary hover:bg-opacity-80 text-white py-2 px-4 rounded transition pulse-animation">Play Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Card 4 -->
+<div class="game-card bg-gray-800 rounded-lg overflow-hidden transition duration-300">
+    <div class="relative">
+        <img src="image (1).jpg" alt="Post-apocalyptic battle arena with stormy skies and survivors" class="w-full h-64 object-cover" />
+        <span class="absolute top-4 left-4 bg-green-500 text-black px-3 py-1 rounded-full text-xs font-bold">SURVIVAL</span>
+    </div>
+    <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">Apocalypse Arena</h3>
+        <div class="flex items-center mb-4">
+            <span class="text-yellow-400">★★★☆☆</span>
+            <span class="text-gray-400 ml-2">3.9/5</span>
+        </div>
+        <p class="text-gray-300 mb-4">Battle in a harsh post-apocalyptic world. Build, loot, and survive till the end!</p>
+        <button onclick="showGameDetails('apocalypse-arena')" class="w-full bg-secondary hover:bg-opacity-80 text-white py-2 px-4 rounded transition">View Details</button>
+   <script const gameDetails = {
+    "cyberstrike": {
+        title: "CyberStrike 2077",
+        desc: "Experience the ultimate futuristic FPS with groundbreaking AI and physics.",
+        img: "https://storage.googleapis.com/workspace-0f70711f-8d6b-92bfc02853a6.png"
+    },
+    "dragons-legacy": {
+        title: "Dragon's Legacy",
+        desc: "Embark on an epic fantasy adventure with unprecedented character customization.",
+        img: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-3f0de8021156.png"
+    },
+    "neon-velocity": {
+        title: "Neon Velocity",
+        desc: "Augmented reality racing at breakneck speeds with full VR support.",
+        img: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-dc18ac63.png"
+    },
+    "apocalypse-arena": {
+        title: "Apocalypse Arena",
+        desc: "Battle in a harsh post-apocalyptic world. Build, loot, and survive till the end!",
+        img: "https://cdn.pixabay.com/photo/2022/11/02/17/27/apocalypse-7564109_1280.jpg"
+    }
+};
+
+function showGameDetails(gameId) {
+    const modal = document.getElementById("gameModal");
+    const title = document.getElementById("modalGameTitle");
+    const desc = document.getElementById("modalGameDescription");
+    const img = document.getElementById("modalGameImage");
+
+    const data = gameDetails[gameId];
+    if (data) {
+        title.textContent = data.title;
+        desc.textContent = data.desc;
+        img.src = data.img;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+    }
+}
+
+function closeGameModal() {
+    const modal = document.getElementById("gameModal");
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+}
+</script></script>
+<!-- Game Modal -->
+<div id="gameModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
+    <div class="bg-gray-900 p-6 rounded-lg max-w-lg w-full relative">
+        <button onclick="closeGameModal()" class="absolute top-2 right-4 text-white text-2xl font-bold">&times;</button>
+        <img id="modalGameImage" src="" alt="Game Image" class="rounded mb-4 w-full h-64 object-cover" />
+        <h2 id="modalGameTitle" class="text-2xl font-bold mb-2 text-primary"></h2>
+        <p id="modalGameDescription" class="text-gray-300 mb-4"></p>
+        <button onclick="closeGameModal()" class="bg-primary text-black px-4 py-2 rounded hover:bg-opacity-90 transition">Close</button>
+    </div>
+</div>
+
+    </div>
+</div> 
+            
+            <div class="text-center mt-12">
+                <button id="loadMoreGames" class="border border-primary text-primary px-8 py-3 rounded-lg text-lg font-bold hover:bg-primary hover:bg-opacity-10 transition">Load More Games</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game News -->
+    <section id="news" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-center"><span class="border-b-4 border-primary">Latest News</span></h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Main News -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden row-span-2">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7d39be15-91dc-4be3-b24f-5de2c1b122c3.png" alt="Gaming convention with crowds of people and large display screens showing upcoming games" class="w-full h-96 object-cover" />
+                    <div class="p-6">
+                        <div class="flex items-center text-sm mb-2">
+                            <span class="text-primary">NEWS</span>
+                            <span class="text-gray-400 mx-2">•</span>
+                            <span class="text-gray-400">2 hours ago</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">GameCon 2024 Announces Record Attendance</h3>
+                        <p class="text-gray-300 mb-4">This year's GameCon event saw over 500,000 attendees with massive reveals for upcoming titles including the next major installment in the CyberStrike franchise.</p>
+                        <button onclick="showFullNews('gamecon-2023')" class="text-primary hover:underline">Read Full Story →</button>
+                    </div>
+                </div>
+                
+                <!-- Other News -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="flex">
+                        <div class="w-1/3">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0bb0cb67-a55e-4dec-bbc7-94a16a98d85a.png" alt="VR headset with glowing display showing a futuristic interface" class="h-full object-cover" />
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <div class="flex items-center text-xs mb-1">
+                                <span class="text-primary">TECH</span>
+                                <span class="text-gray-400 mx-1">•</span>
+                                <span class="text-gray-400">1 day ago</span>
+                            </div>
+                            <h4 class="text-lg font-bold mb-2">New VR Technology Promises Zero Latency</h4>
+                            <button onclick="showFullNews('vr-tech')" class="text-primary hover:underline text-sm">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="flex">
+                        <div class="w-1/3">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/212201a5-fb01-43eb-b9f7-2a400452149f.png" alt="E-sports arena with competitive gamers and cheering audience" class="h-full object-cover" />
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <div class="flex items-center text-xs mb-1">
+                                <span class="text-primary">ESPORTS</span>
+                                <span class="text-gray-400 mx-1">•</span>
+                                <span class="text-gray-400">3 days ago</span>
+                            </div>
+                            <h4 class="text-lg font-bold mb-2">Record $10M Prize Pool for Upcoming Tournament</h4>
+                            <button onclick="showFullNews('esports-tournament')" class="text-primary hover:underline text-sm">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="flex">
+                        <div class="w-1/3">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/82aa3b3a-d5e2-4880-8ba4-0a3fa233d27a.png" alt="Game controller with futuristic design and glowing buttons" class="h-full object-cover" />
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <div class="flex items-center text-xs mb-1">
+                                <span class="text-primary">HARDWARE</span>
+                                <span class="text-gray-400 mx-1">•</span>
+                                <span class="text-gray-400">1 week ago</span>
+                            </div>
+                            <h4 class="text-lg font-bold mb-2">Next-Gen Controller Leak Shows Haptic Feedback Features</h4>
+                            <button onclick="showFullNews('controller-leak')" class="text-primary hover:underline text-sm">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-center"><span class="border-b-4 border-primary">Join Our Community</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Connect With Gamers Worldwide</h3>
+                    <p class="text-gray-300 mb-6">Join over 2 million gamers in our active community. Discuss strategies, share gameplay, and find teammates for your next adventure.</p>
+                    
+                    <div class="bg-gray-800 rounded-lg p-6 mb-6">
+                        <h4 class="text-xl font-bold mb-4">Quick Stats</h4>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <div class="text-4xl font-bold text-primary">2.4M+</div>
+                                <div class="text-gray-400">Members</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-primary">145K</div>
+                                <div class="text-gray-400">Daily Active</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-primary">85</div>
+                                <div class="text-gray-400">Country Chapters</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-primary">24/7</div>
+                                <div class="text-gray-400">Discussion</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="bg-primary text-black px-8 py-4 rounded-lg text-lg font-bold hover:bg-opacity-90 transition w-full">Join Discord</button>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-800 rounded-lg p-6 h-full">
+                        <h4 class="text-xl font-bold mb-4">Top Gamers This Week</h4>
+                        
+                        <div class="space-y-4">
+                            <!-- Top Gamer 1 -->
+                            <div class="flex items-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/eeab86b8-e45e-4f9f-ad8b-1a41eb904906.png" alt="Profile of top gamer with purple avatar and gamer headset" class="w-12 h-12 rounded-full" />
+                                <div class="ml-4 flex-1">
+                                    <div class="font-bold">ProGamer22</div>
+                                    <div class="text-sm text-gray-400">Level 87 • 1,245 Wins</div>
+                                </div>
+                                <div class="text-primary font-bold">#1</div>
+                            </div>
+                            
+                            <!-- Top Gamer 2 -->
+                            <div class="flex items-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/722b1243-755b-41bc-957f-de0344aefbe5.png" alt="Profile of competitive gamer with futuristic mask" class="w-12 h-12 rounded-full" />
+                                <div class="ml-4 flex-1">
+                                    <div class="font-bold">NeonNinja</div>
+                                    <div class="text-sm text-gray-400">Level 76 • 982 Wins</div>
+                                </div>
+                                <div class="text-secondary font-bold">#2</div>
+                            </div>
+                            
+                            <!-- Top Gamer 3 -->
+                            <div class="flex items-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/07140a60-f931-4f13-bc2f-41d58b644fe1.png" alt="Profile of female gamer with pink highlights in avatar" class="w-12 h-12 rounded-full" />
+                                <div class="ml-4 flex-1">
+                                    <div class="font-bold">CyberQueen</div>
+                                    <div class="text-sm text-gray-400">Level 69 • 875 Wins</div>
+                                </div>
+                                <div class="text-yellow-400 font-bold">#3</div>
+                            </div>
+                            
+                            <!-- Other Gamers -->
+                            <div class="text-center">
+                                <button onclick="showLeaderboard()" class="text-primary hover:underline mt-4">View Full Leaderboard →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5ff7e080-a54b-4100-be0f-c93a80b88a10.png" alt="Xtreme GameHub logo by Chahat Kumar" class="h-12 w-12" />
+                    <p class="text-gray-400 mt-4">The ultimate gaming destination for all your entertainment needs.</p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary">Home</a></li>
+                        <li><a href="#games" class="text-gray-400 hover:text-primary">Games</a></li>
+                        <li><a href="#news" class="text-gray-400 hover:text-primary">News</a></li>
+                        <li><a href="#community" class="text-gray-400 hover:text-primary">Community</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-4">Support</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-4">Subscribe</h5>
+                    <p class="text-gray-400 mb-4">Get the latest gaming news and updates.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your Email" class="bg-gray-800 text-white px-4 py-2 rounded-l-lg w-full focus:outline-none" />
+                        <button class="bg-primary text-black px-4 py-2 rounded-r-lg hover:bg-opacity-90 transition">→</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>© 2025 Xtreme GameHub | chahatkumar0101@gmail.com | Design by Chahat Kumar | All Games Working</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Typewriter effect for hero section
+        const heroTitle = document.querySelector('.typewriter');
+        let typed = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!typed && isElementInViewport(heroTitle)) {
+                // Animation already done via CSS
+                typed = true;
+            }
+        });
+        
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        // Interactive functions
+        function exploreGames() {
+            document.getElementById('games').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        function showGameDetails(gameId) {
+            alert(`Game details for ${gameId} would be shown here in a modal or dedicated page.`);
+            // In a full implementation, this would open a modal or redirect to game detail page
+        }
+        
+        function showFullNews(newsId) {
+            alert(`Full news article for ${newsId} would be displayed here.`);
+            // In a full implementation, this would open a modal or redirect to full news page
+        }
+        
+        function playGame(gameId) {
+            const gameContainer = document.createElement('div');
+            gameContainer.className = 'fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center';
+            gameContainer.innerHTML = `
+                <div class="relative w-full max-w-4xl h-3/4 bg-gray-900 rounded-xl overflow-hidden">
+                    <div class="absolute top-4 right-4">
+                        <button onclick="this.parentElement.parentElement.remove()" class="text-white hover:text-primary text-2xl">&times;</button>
+                    </div>
+                    <div class="h-full flex items-center justify-center">
+                        <div class="text-center px-8">
+                            <div class="text-primary text-4xl mb-4">Loading ${gameId.replace('-', ' ')}...</div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5 mb-6">
+                                <div class="bg-primary h-2.5 rounded-full animate-pulse" style="width: 45%"></div>
+                            </div>
+                            <p class="text-gray-300">Game is loading in full interactive mode...</p>
+                            <p class="text-sm text-gray-500 mt-4">(This would show real game content in production)</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(gameContainer);
+            
+            // Simulate game loading
+            setTimeout(() => {
+                const loader = gameContainer.querySelector('.animate-pulse');
+                loader.style.width = '100%';
+                setTimeout(() => {
+                    if(gameId === 'apocalypse-arena') {
+                        gameContainer.innerHTML = `
+                            <div class="relative w-full max-w-4xl h-full bg-gray-900 rounded-xl overflow-hidden">
+                                <div class="absolute top-4 right-4">
+                                    <button onclick="this.parentElement.parentElement.remove()" class="text-white hover:text-primary text-2xl">&times;</button>
+                                </div>
+                                <div class="h-full flex flex-col">
+                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/apocalyptic-cityscape.jpg" alt="Apocalypse Arena full screen gameplay" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
+                                        <h3 class="text-3xl font-bold text-white">APOCALYPSE ARENA</h3>
+                                        <div class="flex justify-between items-center mt-2">
+                                            <span class="text-yellow-400">★★★★★</span>
+                                            <button class="bg-primary text-black px-6 py-2 rounded-lg font-bold">Join Match</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        gameContainer.innerHTML = `
+                            <div class="relative w-full max-w-4xl h-3/4 bg-gray-900 rounded-xl overflow-hidden">
+                                <div class="absolute top-4 right-4">
+                                    <button onclick="this.parentElement.parentElement.remove()" class="text-white hover:text-primary text极速赛车
+                            <div class="h-full flex items-center justify-center">
+                                <div class="text-center px-8">
+                                    <div class="text-primary text-4xl mb-4">${gameId.replace('-', ' ')}</div>
+                                    <div class="text-gray-300 mb-6">Game is now running!</div>
+                                    <div class="bg-gray-800 p-6 rounded-lg text-left">
+                                        <p class="mb-2">Controls: WASD to move, mouse to look</p>
+                                        <p>Press ESC to exit fullscreen</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } }, 1000);
+            }, 300);
+        }
+
+        function showLeaderboard() {
+            alert(`Full leaderboard would be displayed here with rankings and stats.`);
+            // In a full implementation, this would show more gamer profiles with filters
+        }
+        
+        // Load more games functionality
+        document.getElementById('loadMoreGames').addEventListener('click', function() {
+            const gamesContainer = document.querySelector('#games .grid');
+            
+            // Add new game cards
+            const newGames = `
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/61110ca4-0cb5-43aa-9dfa-34e0c8d1a58a.png" alt="Space exploration game with starships and alien planets" class="w-full h-64 object-cover" />
+                        <span class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">NEW</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Space Explorer X</h3>
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400">★★★★☆</span>
+                            <span class="text-gray-400 ml-2">4.6/5</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Explore infinite galaxies and discover ancient alien civilizations.</p>
+                        <button onclick="playGame('space-explorer')" class="w-full bg-secondary hover:bg-opacity-80 text-white py-2 px-4 rounded transition pulse-animation">Play Now</button>
+                    </div>
+                </div>
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/afd7ca8d-7bcd-4469-a020-0302e0012e80.png" alt="Survival shooter game against zombie hordes" class="w-full h-64 object-cover" />
+                        <span class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">HOT</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Zombie Apocalypse</h3>
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400">★★★★★</span>
+                            <span class="text-gray-400 ml-2">4.9/5</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Survive in a post-apocalyptic world filled with zombies.</p>
+                        <button onclick="playGame('zombie-apocalypse')" class="w-full bg-secondary hover:bg-opacity-80 text-white py-2 px-4 rounded transition pulse-animation">Play Now</button>
+                    </div>
+                </div>
+            `;
+            
+            gamesContainer.insertAdjacentHTML('beforeend', newGames);
+            
+            // Disable button after loading
+            this.disabled = true;
+            this.textContent = 'No More Games';
+            this.classList.remove('hover:bg-primary', 'hover:bg-opacity-10');
+        });
+        
+        // Mobile menu toggle would be implemented here
+        // Form validation for subscription
+        // Game filtering functionality
+        // etc.
+    </script>
+</body>
+</html>
+
+```
